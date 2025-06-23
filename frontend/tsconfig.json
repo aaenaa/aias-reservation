@@ -1,0 +1,132 @@
+{
+  /**
+    *  TypeScript Configuration File (tsconfig.json)
+    *  ==========================================
+    *  
+    *  Purpose:
+    *  This configuration file controls TypeScript compiler options and project settings
+    *  for a modern React application using TypeScript.
+    *  
+    *  Key Features:
+    *  - Modern ES2020 JavaScript output
+    *  - React 17+ JSX transformation
+    *  - Strict type checking enabled
+    *  - Bundler-optimized module resolution
+    *  - Source maps for debugging
+    *  
+    *  Usage:
+    *  - Used by TypeScript compiler (tsc)
+    *  - Used by IDEs for TypeScript support
+    *  - Used by build tools (webpack, vite, etc.)
+    *  
+    *  File Structure:
+    *  - Source files: .\src\**\*.ts(x)
+    *  - Output directory: ./dist/scripts
+    *  
+    *  Prerequisites:
+    *  - TypeScript 4.x or higher
+    *  - Node.js development environment
+    *  - React 17+ for JSX transformation
+    *  
+    *  Note: This configuration is optimized for development with modern bundlers
+    *  and includes strict type checking for better code quality.
+    */  
+
+  "compilerOptions": {
+    // Specify ECMAScript target version for emitted JavaScript
+    "target": "ES2020",
+
+    /**
+      * Specify module code generation method
+      * ESNext uses the latest supported ES module syntax
+      */
+    "module": "ESNext",
+
+    /**
+      * Specify JSX code generation mode
+      * react-jsx: Emit .js files with JSX changed to _jsx calls (React 17+ style)
+      */ 
+    "jsx": "react-jsx",
+
+    // List of library files to be included in the compilation
+    "lib": [
+      "ES2020",  // Include ES2020 library definitions
+      "DOM"      // Include DOM definitions for browser APIs
+    ],
+
+    /**
+      * Skip type checking of declaration files (.d.ts)
+      * Useful for avoiding errors in third-party declaration files
+      */
+    "skipLibCheck": true,
+
+    /**
+      * Enable all strict type checking options
+      * Includes: strictNullChecks, strictFunctionTypes, strictBindCallApply, etc.
+      */
+    "strict": true,
+
+    // Report errors on unused local variables
+    "noUnusedLocals": true,
+
+    // Report errors on unused parameters in functions
+    "noUnusedParameters": true,
+
+    /**
+      * Specify module resolution strategy
+      * Bundler is optimized for bundlers like Webpack, Rollup, etc.
+      */
+    "moduleResolution": "Bundler",
+
+    /**
+      * Allow imports to include .ts/.tsx extensions
+      * Useful when working with bundlers that can handle TypeScript
+      */
+    "allowImportingTsExtensions": true,
+
+    // Ensure each file can be safely transpiled without relying on other imports
+    "isolatedModules": true,
+
+    // Do not emit output files (useful when using a bundler)
+    "noEmit": true,
+
+    /** 
+      * Specify the output directory for compiled files
+      * All emitted files will be placed in this directory
+      */
+    "outDir": "./dist/scripts",
+
+    /**
+      * Specify the root directory of input files
+      * This is used to control the output directory structure
+      */
+    "rootDir": "./src",
+
+    // Enable absolute imports by setting baseUrl and paths
+    "baseUrl": "./", // Base URL for module resolution
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@routes/*": ["src/routes/*"],
+      "@utilities/*": ["src/utilities/*"],
+      "@api/*": ["src/api/*"],
+      "@constants/*": ["src/constants/*"],
+      "@context/*": ["src/context/*"],
+      "@reducer/*": ["src/reducer/*"]
+    }
+  },
+
+  // Specify files to include in compilation
+  "include": [
+    "src/**/*.ts",     // Include all TypeScript files in src
+    "src/**/*.tsx",    // Include all TypeScript React files in src
+    "scripts/*", 
+  ],
+
+  // Specify files to exclude from compilation
+  "exclude": [
+    "**/*.js",   // Exclude all JavaScript files
+    "**/*.jsx"   // Exclude all JavaScript React files
+  ]
+}
